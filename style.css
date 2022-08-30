@@ -11,6 +11,7 @@
   --ff-heading: "Poppins", sans-serif;
 
   /* Font Weight */
+  --fw-light: 300;
   --fw-regular: 400;
   --fw-semibold: 500;
 }
@@ -27,7 +28,7 @@
 /* Set core body defaults */
 body {
   display: grid;
-  grid-template-rows: 8rem 1fr 7rem;
+  grid-template-rows: 15% 1fr 15%;
   min-height: 100vh;
   max-width: 30rem;
   margin: 0 auto;
@@ -35,7 +36,7 @@ body {
 
   color: var(--clr-white);
   font-family: var(--ff-body);
-  font-weight: var(--fw-regular);
+  font-weight: var(--fw-light);
   line-height: 1.5;
 
   text-rendering: optimizeSpeed;
@@ -59,6 +60,7 @@ picture {
 }
 
 /* --------- Header --------- */
+
 header {
   margin-top: 2rem;
 }
@@ -67,58 +69,130 @@ header > img {
   width: 8rem;
 }
 
+/* --------- Main --------- */
+
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+  display: grid;
+  gap: 2rem;
 }
 
 section {
   text-align: center;
-  align-items: center;
 }
 
 section > h1 {
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-family: var(--ff-heading);
   font-weight: var(--fw-semibold);
-  margin-bottom: 1rem;
 }
 
 section > p {
   font-size: 1rem;
   margin-bottom: 1.5rem;
-  opacity: 0.8;
 }
 
 section > a {
-  display: block;
-  width: fit-content;
-  text-decoration: none;
-  font-size: 14px;
-  background-color: var(--clr-white);
-  padding: 0.5rem 4.5rem;
-  border-radius: 10rem;
+  display: inline-block;
   margin: 0 auto;
+  padding: 0.5rem 4.5rem;
   color: var(--clr-violet);
-  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  border-radius: 10rem;
+  background-color: var(--clr-white);
+  box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* --------- Footer --------- */
+
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  margin: auto;
 }
 
 footer > a {
-  display: block;
-  border: 1px solid var(--clr-white);
+  display: inline-block;
   padding: 0.35rem;
+  margin-inline: 0.25rem;
   border-radius: 100%;
+  border: 1px solid var(--clr-white);
 }
 
 footer > a > img {
   width: 1rem;
   height: 1rem;
+}
+
+/* --------- Media Queries --------- */
+
+@media screen and (min-width: 768px) {
+  body {
+    grid-template-rows: 20% 1fr 12%;
+    max-width: 85rem;
+    padding: 0 2rem;
+    background-image: url(./images/bg-desktop.svg);
+    background-position: initial;
+  }
+
+  header {
+    margin: auto 0;
+  }
+
+  header > img {
+    width: 13.5rem;
+  }
+
+  main {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 3.5rem;
+    align-content: center;
+  }
+
+  .image-container {
+    margin-top: 5%;
+  }
+
+  .image-container > img {
+    min-width: 100%;
+  }
+
+  section {
+    margin-top: 15%;
+    text-align: initial;
+  }
+
+  section > h1 {
+    font-size: 2.5rem;
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-semibold);
+    margin-bottom: 1rem;
+  }
+
+  section > p {
+    font-size: 1.135rem;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    font-family: var(--ff-body);
+  }
+
+  section > a {
+    font-size: 1.25rem;
+    padding: 0.85rem 4rem;
+  }
+
+  footer {
+    padding-top: 1rem;
+    margin: initial;
+    margin-left: auto;
+  }
+
+  footer > a {
+    padding: 0.7rem;
+  }
+
+  footer > a > img {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
 }
