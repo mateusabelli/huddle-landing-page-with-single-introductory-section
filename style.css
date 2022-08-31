@@ -7,59 +7,57 @@
   --clr-white: hsl(0, 0%, 100%);
 
   /* Font Family */
-  --ff-body: "Open Sans", sans-serif;
   --ff-heading: "Poppins", sans-serif;
+  --ff-body: "Open Sans", sans-serif;
 
   /* Font Weight */
   --fw-light: 300;
   --fw-regular: 400;
   --fw-semibold: 500;
+
+  /* Font Sizes */
+  --fs-sm: 0.875rem;
+  --fs-regular: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2.5rem;
+
+  /* Content width */
+  --mobile-width: 40rem;
+  --desktop-width: 40rem;
 }
 
 /* --------- Reset & Base --------- */
 
-/* Reset */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* Set core body defaults */
 body {
   display: grid;
-  grid-template-rows: 15% 1fr 15%;
+  grid-template-rows: 8rem 1fr 6rem;
+  max-width: var(--mobile-width);
   min-height: 100vh;
-  max-width: 30rem;
   margin: 0 auto;
   padding: 0 2.2rem;
-
-  color: var(--clr-white);
-  font-family: var(--ff-body);
-  font-weight: var(--fw-light);
-  line-height: 1.5;
 
   text-rendering: optimizeSpeed;
   background-color: var(--clr-violet);
 
-  background-image: url(./images/bg-mobile.svg);
   background-position: top;
-  background-repeat: no-repeat;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./images/bg-mobile.svg);
 }
 
-/* body * {
-  outline: 1px solid rgba(0, 0, 0, 0.5);
-} */
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
+img {
   display: block;
+  max-width: 100%;
 }
 
-/* --------- Header --------- */
+/* --------- Mobile Header --------- */
 
 header {
   margin-top: 2rem;
@@ -69,49 +67,65 @@ header > img {
   width: 8rem;
 }
 
-/* --------- Main --------- */
+/* --------- Mobile Main Sections --------- */
 
 main {
   display: grid;
   gap: 2rem;
+
+  color: var(--clr-white);
+  font-family: var(--ff-body);
+  font-weight: var(--fw-light);
+  line-height: 1.5;
 }
 
 section {
   text-align: center;
 }
 
-section > h1 {
+.title {
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: var(--fs-lg);
   font-family: var(--ff-heading);
   font-weight: var(--fw-semibold);
 }
 
-section > p {
-  font-size: 1rem;
+.description {
   margin-bottom: 1.5rem;
+  font-size: var(--fs-regular);
 }
 
-section > a {
+.register-button {
   display: inline-block;
-  margin: 0 auto;
   padding: 0.5rem 4.5rem;
+  margin: 0 auto;
+
   color: var(--clr-violet);
-  font-size: 14px;
+  font-size: var(--fs-sm);
+  font-family: var(--ff-heading);
   font-weight: var(--fw-semibold);
   text-decoration: none;
+
   border-radius: 10rem;
   background-color: var(--clr-white);
   box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+
+  transition: background-color 0.3s, color 0.15s;
 }
 
-/* --------- Footer --------- */
+.register-button:focus-visible,
+.register-button:hover {
+  color: var(--clr-white);
+  background-color: var(--clr-soft-magenta);
+}
+
+/* --------- Mobile Footer --------- */
 
 footer {
   margin: auto;
 }
 
-footer > a {
+.social-button {
   display: inline-block;
   padding: 0.35rem;
   margin-inline: 0.25rem;
@@ -119,38 +133,47 @@ footer > a {
   border: 1px solid var(--clr-white);
 }
 
-footer > a > img {
+.social-button > img {
   width: 1rem;
   height: 1rem;
+}
+
+.social-button:hover {
+  filter: brightness(0) saturate(100%) invert(74%) sepia(72%) saturate(1331%)
+    hue-rotate(253deg) brightness(98%) contrast(85%);
 }
 
 /* --------- Media Queries --------- */
 
 @media screen and (min-width: 768px) {
   body {
-    grid-template-rows: 20% 1fr 12%;
+    grid-template-rows: 10rem 1fr 6rem;
     max-width: 85rem;
-    padding: 0 2rem;
+
     background-image: url(./images/bg-desktop.svg);
     background-position: initial;
   }
 
+  /* --------- Desktop Header --------- */
+
   header {
-    margin: auto 0;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   header > img {
     width: 13.5rem;
   }
 
+  /* --------- Desktop Main Sections --------- */
+
   main {
     grid-template-columns: 1.35fr 1fr;
     gap: 3.5rem;
-    align-content: center;
   }
 
   .image-container {
-    margin-top: 5%;
+    margin-top: 2rem;
   }
 
   .image-container > img {
@@ -158,28 +181,27 @@ footer > a > img {
   }
 
   section {
-    margin-top: 15%;
+    margin-top: 5rem;
     text-align: initial;
   }
 
-  section > h1 {
-    font-size: 2.5rem;
+  .title {
+    font-size: var(--fs-xl);
     font-family: var(--ff-heading);
     font-weight: var(--fw-semibold);
     margin-bottom: 1rem;
   }
 
-  section > p {
-    font-size: 1.135rem;
-    margin-bottom: 1.5rem;
-    opacity: 1;
-    font-family: var(--ff-body);
+  .description {
+    font-size: var(--fs-md);
   }
 
-  section > a {
-    font-size: 1.25rem;
+  .register-button {
     padding: 0.85rem 4rem;
+    font-size: var(--fs-md);
   }
+
+  /* --------- Desktop Footer --------- */
 
   footer {
     padding-top: 1rem;
@@ -187,11 +209,11 @@ footer > a > img {
     margin-left: auto;
   }
 
-  footer > a {
+  .social-button {
     padding: 0.7rem;
   }
 
-  footer > a > img {
+  .social-button > img {
     width: 1.15rem;
     height: 1.15rem;
   }
